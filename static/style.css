@@ -1,0 +1,210 @@
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    background: #ffffff;
+    margin: 80px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    resize: none;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5a67d8;
+}
+
+.result {
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f1f1f1;
+}
+.progress-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transition: width 0.6s ease;
+}
+
+.progress-bar.high { background-color: #2ecc71; }   /* Green */
+.progress-bar.medium { background-color: #f1c40f; } /* Yellow */
+.progress-bar.low { background-color: #e74c3c; }    /* Red */
+
+/* Dark mode toggle button */
+.toggle-btn {
+    float: right;
+    background: #444;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* DARK MODE STYLES */
+body.dark {
+    background: linear-gradient(135deg, #1f2933, #111827);
+}
+
+body.dark .container {
+    background: #1e293b;
+    color: #e5e7eb;
+}
+
+body.dark textarea {
+    background: #111827;
+    color: #e5e7eb;
+    border: 1px solid #374151;
+}
+
+body.dark button {
+    background-color: #2563eb;
+}
+
+body.dark .result {
+    background: #111827;
+}
+
+body.dark h1,
+body.dark .subtitle {
+    color: #e5e7eb;
+}
+/* Result box */
+.result-box {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #1e293b;
+    color: white;
+}
+
+/* Progress bar outer container (dark line) */
+.confidence-container {
+    width: 100%;
+    height: 26px;
+    background-color: #0f172a;   /* DARK background */
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+/* Progress bar fill */
+.confidence-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #22c55e, #4ade80); /* Green gradient */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.6s ease-in-out;
+}
+
+/* Percentage text */
+.confidence-text {
+    font-weight: bold;
+    color: #0f172a;   /* DARK text for contrast */
+    font-size: 14px;
+}
+.result-box {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.result-text {
+    font-size: 26px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.result-text.real {
+    color: #00ff99;
+    background: rgba(0, 255, 153, 0.15);
+}
+
+.result-text.fake {
+    color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.15);
+}
+.live-title {
+    margin-top: 30px;
+    color: #e5e7eb;
+}
+
+.news-list {
+    margin-top: 15px;
+}
+
+.news-card {
+    background: #111827;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.news-card p {
+    font-size: 13px;
+    color: #cbd5f5;
+}
+
+.check-btn {
+    margin-top: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}

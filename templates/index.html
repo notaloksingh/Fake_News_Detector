@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+  <button class="toggle-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <h1>📰 Fake News Detection System</h1>
+    <p class="subtitle">AI-powered news authenticity checker</p>
+
+    <form method="POST">
+        <textarea name="news" placeholder="Paste news article here..." required></textarea>
+        <button type="submit">Check News</button>
+    </form>
+    <h3 class="live-title">📰 Latest Live News</h3>
+
+<div class="news-list">
+    {% for news in live_news %}
+        <div class="news-card">
+            <strong>{{ news.title }}</strong>
+            <p>{{ news.description }}</p>
+
+            <form method="POST">
+                <input type="hidden" name="news" value="{{ news.title }} {{ news.description }}">
+                <button type="submit" class="check-btn">Check This News</button>
+            </form>
+        </div>
+    {% endfor %}
+</div>
+
+
+    {% if result %}
+<div class="result-box">
+    <h2 class="result-text {{ 'real' if result == 'REAL NEWS' else 'fake' }}">
+        {{ result }}
+    </h2>
+</div>
+
+    <div class="confidence-container">
+        <div class="confidence-bar" id="confidence-bar">
+            <span class="confidence-text" id="confidence-text">0%</span>
+        </div>
+    </div>
+</div>
+{% endif %}
+<script>
+function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle("dark");
+
+    // Save preference
+    if (body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
+}
+
+// Load saved theme on page load
+window.onload = function () {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+    }
+    // Set progress bar widths based on data-confidence to avoid inline CSS templating
+    const bars = document.querySelectorAll('.progress-bar[data-confidence]');
+    bars.forEach(b => {
+        const v = Number(b.getAttribute('data-confidence')) || 0;
+        b.style.width = v + '%';
+    });
+};
+function updateConfidence(confidence) {
+    const bar = document.getElementById("confidence-bar");
+    const text = document.getElementById("confidence-text");
+
+    bar.style.width = confidence + "%";
+    text.innerText = confidence + "%";
+
+    // Change color based on confidence
+    if (confidence < 50) {
+        bar.style.background = "linear-gradient(90deg, #ef4444, #f87171)"; // RED
+        text.style.color = "white";
+    } else {
+        bar.style.background = "linear-gradient(90deg, #22c55e, #4ade80)"; // GREEN
+        text.style.color = "#0f172a";
+    }
+}
+    updateConfidence({{ confidence }});
+</script>
+
+</script>
+
+
+</body>
+</html>
